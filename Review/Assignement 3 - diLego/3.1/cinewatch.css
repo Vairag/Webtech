@@ -1,0 +1,81 @@
+#header > .navbar-inner {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  height: 70px;
+}
+
+#header > .navbar-inner > .container {
+  margin-top: 13px;
+}
+
+.cwResultList {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.cwResultList > li {
+  background-color: #EFEFEF;
+  margin: 10px 0;
+  padding: 15px 15px;
+}
+
+.cwResultList > li:hover {
+  cursor: pointer;
+  background-color: #F4F4F4;
+}
+
+.cwMapContainer > div {
+  width: 940px;
+  height: 250px;
+}
+
+.cwJan {
+  padding: 10px;
+  margin-bottom: 30px;
+  background-color: #eeeeee;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.cwJan p {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 30px;
+  color: inherit;
+}
+
+.cwVi {
+  padding: 60px;
+  border: solid 20px #f2f2f2;
+  margin-bottom: 30px;
+  background: url(../img/kinotest.jpg) center top no-repeat;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.cwVi h1 {
+  margin-bottom: 0;
+  padding-top: 80px ;
+  padding-left: 17px ;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: inherit;
+}
+
+.cwVi p {
+  font-size: 18px;
+  font-weight: 200;
+  padding-left: 17px ;
+  line-height: 30px;
+  color: inherit;
+}
+
+.cwIdLandingPage {
+  margin-top: 20px;
+}

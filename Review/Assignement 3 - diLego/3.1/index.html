@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CineWatch</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/cinewatch.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="navbar navbar-static-top" id="header">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">CineWatch</a>
+          <nav>
+            <form class="navbar-form">
+              <div class="input-prepend input-append pull-right">
+                <button class="btn cwBtnGeolocate" type="button">
+                  <i class="icon-globe cwTooltip"
+                      data-title="Use your current location"
+                      data-placement="bottom">
+                  </i>
+                </button>
+                <input class="input-xxlarge cwIdInputLocation"
+                    type="text" placeholder="Enter your location...">
+                <button class="btn cwBtnFind" type="button">Find</button>
+              </div>
+            </form>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="container cwIdContent">
+      <div class="cwIdLandingPage">
+        <section class="cwVi">
+          <h1>CineWatch</h1>
+          <p>Find cinemas in your area and buy tickets with ease.</p>
+        </section>
+
+        <section class="row">
+          <div class="span4">
+            <p class="lead">All cinemas. One place.</p>
+            <p>
+              Did you ever have the problem of wanting to watch a specific movie or getting
+              information on a new release? Then stop searching because you just found the portal for
+              you. Here you can access all the information you need in order to have a great cinema
+              experience with your friends.
+            </p>
+          </div>
+
+          <div class="span4">
+            <p class="lead">Make spending money fun again.</p>
+            <p>
+              Not knowing, how the cinema you want to visit is, is a big problem. So we at CineWatch
+              want to help you with your choice. By using our portal you are able to find the most
+              befitting cinema in respect of your personal taste.
+            </p>
+          </div>
+		  <div class="span4">
+           <p class="lead">Easier than downloading movies.</p>
+           <p>
+              Why should you download a movie, watch it at home in low resolution and sound quality.
+              Just a few steps and you can reserve or buy a movie ticket from any cinema you want,
+              easy from home. Make the movie experience your own again.
+           </p>
+          </div>
+		</section>
+
+		<section class="cwJan">
+          <p>Check out the hottest trailers</p>
+        </section>
+
+        <section class="row">
+          <div class="span12">
+          <p class="lead">Brand new Skyfall Trailer out now</p>
+          <p>
+                 Daniel Craig plays James Bond now for the third time, but we can tell you that this movie is a totally new kind of Bond movie.
+           Director Sam Mendes creates an image of a shattered hero who fight with his inner demons. Since we don't want to spoiler we won't go into much detail, but this movie will focus on James childhood and present the viewer with a new and unknown vulnerable site of the hero.
+          </p>
+          <p>
+          Ticket sales will show whether or not the audience likes this new kind of Bond, which is so drastically different from classics like "From Russia with Love".
+          </p>
+          <p>
+           <a href="https://www.skyfall-movie.com/site/"> Check out the official Skyfall page for more information! </a>
+          </p>
+          <p>
+           The movie is to be released in Germany on the first of November 2012.
+          </p>
+          </div>
+          <div class="span12">
+            <p align="center">
+              <video src="https://plus.martinmatysiak.de/cinewatch/media/jamesbond__skyfall_1080p.mp4" width="800" height="450" controls></video>
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="container">
+      <small class="pull-right">&copy; Dilego, 2012</small>
+    </footer>
+
+
+    <!-- Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/cinemasearch.js"></script>
+    <script src="js/cinewatch.js"></script>
+    <script src="js/detailspage.js"></script>
+    <script src="js/locationhelper.js"></script>
+    <script src="js/movielist.js"></script>
+    <script src="js/resultspage.js"></script>
+
+    <!-- Templates -->
+    <script id="cwResultsPageTemplate" type="text/x-handlebars-template">
+      <div class="cwMapContainer"></div>
+      <h2>Results near your location</h2>
+      <button class="pull-right btn cwBtnBack">Back</button>
+      <p>We found {{results.length}} cinemas in your area.</p>
+      <ul class="cwResultList">
+        {{#each results}}
+          <li data-reference="{{this.reference}}">{{this.name}}</li>
+        {{/each}}
+      </ul>
+    </script>
+
+    <script id="cwDetailsPageTemplate" type="text/x-handlebars-template">
+      <h2>{{name}}</h2>
+      <p>{{address}}</p>
+      <p>Phone: {{phone}}</p>
+      <p>Web: <a href="{{url}}">{{url}}</a></p>
+      <h3>Book a ticket</h3>
+      <form class="form-horizontal cwIdBookForm">
+        <div class="control-group">
+          <label class="control-label" for="date">Date</label>
+          <div class="controls">
+            <input type="date" name="date" value="2012-11-01">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="movie">Movie</label>
+          <div class="controls">
+            <select name="movie" class="cwFormMovie">
+            {{#each movies}}
+              <option>{{this}}</option>
+            {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="amount">Number of tickets</label>
+          <div class="controls">
+            <input type="number" min="1" max="10" name="amount" value="1">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="email">E-Mail</label>
+          <div class="controls">
+            <input type="email" name="email" placeholder="Your E-Mail address...">
+          </div>
+        </div>
+        <div class="control-group">
+          <input type="hidden" name="cinema" value="{{reference}}">
+          <div class="controls">
+            <button class="btn btn-primary cwBtnBook">OK</button>
+            <button class="btn cwBtnBack">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </script>
+
+    <!-- Main application script -->
+    <script>
+      // Redirect to where the site is acutally usable.
+      window.location.href = 'http://plus.martinmatysiak.de/cinewatch/';
+      window.cineWatch = new CineWatch();
+    </script>
+  </body>
+</html>

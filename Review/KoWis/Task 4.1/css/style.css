@@ -1,0 +1,301 @@
+body {
+	background-color:#000000;
+	font-family:"Arial";
+	font-style:normal;
+	color:white;
+	font-size:15px;
+}
+
+a:link,visited ,active {
+	color:#e0e0e0;
+	text-decoration:none;
+}
+
+a:visited  {
+	color:#e0e0e0;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#ffffff;
+}
+
+.transparent {
+    color: transparent;
+}
+
+.neon {
+    color: transparent;
+    text-shadow: 0 0  10px #666fff,
+                 0 0  20px #666fff,
+                 0 0  30px #666fff,
+                 0 0  40px #fe44ff,
+                 0 0  70px #8e44ff,
+                 0 0  80px #8e44ff,
+                 0 0 100px #8e44ff,
+                 0 0 150px #8e44ff;
+}
+
+#overlapped-title {
+    position: relative;
+    left: -36.1%;
+}
+
+#layer {
+	width:900px;
+	background-color:#01165d;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	margin-left: -450px;
+
+}
+
+header {
+	font-style:italic;
+	font-size:50px;
+	padding:10px;
+}
+
+nav {
+	background-color:#b80000;
+	font-weight:bold;
+	font-size:20px;
+	height:30px;
+	color:#e0e0e0;
+	word-spacing:30px;
+        box-shadow: 0px 0px 3px 1px #b80000;
+        margin-bottom: 5px;
+}
+
+nav ul {
+    margin-left: 10px;
+}
+
+nav li {
+	display:inline;
+}
+
+nav a {
+    color: black;
+    text-shadow: 1px 1px 3px black;
+}
+
+aside {
+	width:260px;
+	background-color:#001d7c;
+	padding:10px;
+	float:left;
+}
+
+aside h1 {
+	font-size:15px;
+	font-weight:bold;
+}
+
+
+#mapelement {
+	width: 250px;
+	height: 200px;
+	border-style:solid;
+	border-width:2px;
+	border-color:#b80000;
+	margin-bottom:35px;
+}
+
+
+#content {
+	width:600px;
+	margin:10px;
+	float:left;
+}
+
+article {
+    border-radius: 15px;
+    border: 1px solid #222299;
+    box-shadow: 0px 0px 3px 3px #222266;
+    background-color: #1335A9;
+    padding:10px;
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+article:hover {
+    border: 1px solid #1335F9;
+    box-shadow: 0px 0px 4px 3px #222299, inset 0px 0px 3px 1px #2222FF;
+}
+
+.abstract {
+	margin-right:20px;
+        padding-bottom: 5px;
+}
+
+.abstract h1 {
+	font-size:20px;
+	font-weight:bold;
+	clear:none;
+}
+
+.abstract h2 {
+	font-size:15px;
+	clear:none;
+}
+
+.trailer {
+        display: inline;	
+}
+
+.trailer video {
+    float: left;                /* for some reason *without* the float, the video is not aligned properly on the left side when viewed inside chrome */
+    width: 48%;
+	padding-bottom:20px;
+}
+
+.screen-times {
+    font-size: 0.9em;
+    width: 50%;
+    float: right;
+    display: inline;
+}
+
+.screen-times table {
+    width:100%;
+}
+
+.screen-times table a.highlight {
+    background-color: #E8B34C;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 1px;
+    padding-right: 1px;
+    color: black;
+}
+
+.screen-times table td:first-child {
+    text-align: left;
+}
+.screen-times table th:first-child {
+    text-align: left;
+}
+
+.screen-times table td {
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.screen-times table th {
+    text-align: center;
+    padding-right: 2px;
+}
+
+.screen-times table th:nth-child(even) {
+    background-color: #1335B9;
+}
+
+.screen-times table td:nth-child(even) {
+    background-color: #1335B9;
+}
+
+.screen-times table td {
+    border-bottom: 1px solid #0335F6;
+}
+
+.screen-times table th {
+    border-bottom: 2px solid #0335F6;
+}
+
+.screen-times table th:first-child {
+    border-right: 2px solid #0335F6;
+}
+
+.screen-times table td:first-child {
+    border-right: 2px solid #0335F6;
+}
+
+.screen-times table tr:last-child td {
+    border-bottom: none;
+}
+
+.description {
+    text-align: justify;
+    clear:both;
+}
+
+
+.reservation {
+    margin-top: 10px;
+    display: none;
+    height: 0px;
+}
+
+.reservation h2 {
+    font-weight: bold;
+    border-bottom: 2px solid #0335F6;
+    margin-bottom: 10px;
+}
+
+.reservation div {
+    margin-bottom: 10px;
+}
+
+.reservation input[type="number"] {
+    display: inline-block;
+    width: 3em;
+}
+
+.reservation #cinema {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    display: block;
+    opacity: 0;
+}
+
+#side-form {
+	margin-bottom:25px;
+	line-height:200%;
+}
+
+#moviebar {
+	height:250px;
+	background-color:#000d3c;
+	padding-top:30px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:0px;
+	clear:both;
+}
+
+#moviebar img {
+	float:left;
+	width:150px;
+	height:200px;
+	padding:10px;
+}
+
+footer {
+	background-color:#000000;
+	font-style:italic;
+	font-size:12px;
+	text-align:right;
+	color:#e0e0e0;
+	clear:both;
+	word-spacing:20px;
+	padding:5px;
+}
+
+footer li {
+	display:inline;
+}
+
+input {
+    display: block;
+}
+
+video {
+}

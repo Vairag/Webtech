@@ -1,0 +1,14 @@
+*.class
+
+# eclipse
+.metadata
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+cinema_website/Web.config
+.DS_Store
+
+StudyStuff\config.php

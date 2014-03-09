@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link href="css/jquery.tweet.css" rel="stylesheet"/>
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <script src="js/jquery.tweet.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    function randomString(length) {
+      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
+      var str = '';
+      for (var i = 0; i < length; i++) {
+        str += chars[Math.floor(Math.random() * chars.length)];
+      }
+      return str;
+    }
+    var rnd = randomString(8);
+
+    jQuery(function($) {
+      $(".rnd").replaceWith(rnd);
+      $(".feed .code").hide().each(function(i, e){ eval($(e).text()); });
+    });
+	
+  </script>
+</head>
+<body>
+
+  <div class="feed">
+    <pre class="code">
+      jQuery(function($){
+        $(".tweet").tweet({
+          join_text: "auto",
+          username: "IMDb",
+          avatar_size: 32,
+          count: 8,
+          auto_join_text_default: " we said, ",
+          auto_join_text_ed: " we ",
+          auto_join_text_ing: " we were ",
+          auto_join_text_reply: " we replied ",
+          auto_join_text_url: " we were checking out ",
+          loading_text: "loading tweets..."
+        });
+      });
+    </pre>
+    <div class='tweet query'></div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>CinemaPortal</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="author" content="KoWis" />
+    <meta name="keywords" content="cinema, movie, trailer" />
+
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/processing.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    
+    <script type="text/javascript">
+      var map;
+      var infowindow;
+      function initialize(coords) {
+          var latlng = new google.maps.LatLng(coords.latitude, coords.longitude);
+          var myOptions = {
+              zoom: 14,
+              center: latlng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          map = new google.maps.Map(document.getElementById("mapelement"), myOptions);
+          infowindow = new google.maps.InfoWindow();
+          
+          var marker = new google.maps.Marker({
+              position: latlng, 
+              map: map, 
+              title: "Current Position"
+          });
+          
+          var request = {
+              location: latlng,
+              radius: '1500',
+              query: 'kino -rwth -sex'
+          };
+          
+          service = new google.maps.places.PlacesService(map);
+          service.textSearch(request, places_callback);
+      }
+      
+      function places_callback(results, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+              for (var i = 0; i < results.length; i++) {
+                  var place = results[i];
+                  createMarker(results[i]);
+              }
+          }
+      }
+      
+      function createMarker(place) {
+          var placeLoc = place.geometry.location;
+          var marker = new google.maps.Marker({
+              map: map,
+              position: placeLoc
+          });
+          
+          google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent(place.name);
+              infowindow.open(map, this);
+          });
+      }
+      
+
+      // this function will be called by the google places library, once the library is available
+      function initialize_location() {
+          navigator.geolocation.getCurrentPosition(function(position){ 
+              initialize(position.coords);
+          }, function(){
+              document.getElementById('mapelement').innerHTML = 'Position not found.';
+          });
+      }
+
+      // animation of the "P" in CinemaPortal
+      function initTitleAnimation() {
+          var lightOn = 1;
+          function titleAnimationUpdate() {
+              var delay;
+              if(lightOn) {
+                  lightOn = Math.round(Math.random());
+              } else {
+                  lightOn = 1;
+              }
+              document.getElementById("title-P-blur").setAttribute("class",lightOn?"neon":"transparent");
+              document.getElementById("title-P").style.color = lightOn?"white":"#666666";
+
+              if(lightOn)
+                  delay = Math.round(Math.random()*15000);
+              else {
+                  delay = Math.round(Math.random()*5000);;
+              }
+
+              setTimeout(titleAnimationUpdate, delay);
+          }
+      
+          setTimeout(titleAnimationUpdate, 1000);
+      }
+
+      // asyncronously load the google maps api, so it does not halt
+      // page loading when the connection is slow
+      function loadScript() {
+          var script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src = "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true&callback=initialize_location";
+          document.body.appendChild(script);
+          
+          initTitleAnimation();
+
+          webtech_12.kino_site.core.main();
+      }
+
+      window.onload = loadScript;
+    </script>
+       <script type="text/javascript">
+		var bound = false;
+		var reservations = new Array();
+		var jsSeatsPerRow = 26;
+		var jsRows = 15;
+		var jsWidth = 500;
+		var jsOrderQuantity = 2;
+
+      function setOrderQuantity(v) {
+          jsOrderQuantity = v;
+      }
+		
+       function bindJavascript() {
+         var pjs = Processing.getInstanceById("cinema");
+         if(pjs!=null) {
+           pjs.bindJavascript(this);
+           bound = true; }
+         if(!bound) setTimeout(bindJavascript, 250);
+       }
+	   bindJavascript();
+       function clearReservations() {
+		 reservations = [];
+       }
+	   
+       function addReservation(seat, row) {
+		 reservations.push(new reservation(seat, row));
+       }
+       
+       function reservation(seat, row) {
+		 this.seatNumber=seat;
+		 this.seatRow=row;
+	   }
+	   
+      function showReservations() {
+          webtech_12.kino_site.core.reservationsUpdated();
+      }
+
+       </script>
+  </head>
+  
+  <body>
+    <div id="layer">
+      <header>
+        <span class="neon">Cinema</span><span id="title-P-blur" class="neon">P</span><span class="neon">ortal</span>
+        <span id="overlapped-title"><span>Cinema</span><span id="title-P">P</span><span>ortal</span></span>
+      </header>
+      <nav>
+	<ul>
+	  <li><a href="">Home</a></li>
+	  <li><a href="">Cinemas</a></li>
+	  <li><a href="">Movies</a></li>
+	</ul>
+      </nav>
+      
+      <aside>
+	<h1>Cinemas near your position</h1>
+	<div id="mapelement" style="color: black;">
+	  Getting position.
+	</div>
+	<h1>Search for Showing</h1>
+	<form id="side-form">
+	  <label for="num">Date:</label>
+	  <input type="date" name="date" />
+	  Number of tickets:
+	  <input type="number" min="1" max="10" name="num" />
+	  Movie:
+	  <select>
+	    <option selected>Planet Earth</option>
+	    <option>Star Wars : The Phantom Menace</option>
+	    <option>Grass: The Movie</option>
+	    <option>Skyfall</option>
+	  </select>
+	  <button>Search</button>
+	</form>
+      </aside>
+      
+      <div id="content">
+	<article class="box">
+	  <div class="abstract">
+	    <h1>Star Wars - A New Hope</h1>
+	    <h2>(1977), Director: George Lucas, Writer: George Lucas</h2>
+	  </div>
+	  <div class="trailer">
+	    <video controls preload>
+	      <source src="trailer/swtrailer.mp4" type='video/mp4; codecs="mp4, acc"' />
+	      <source src="trailer/swtrailer.webm" type='video/webm; codecs="vp8, vorbis"' />
+	      Video  not supported
+	    </video>
+	  </div>
+          <div class="screen-times">
+            <table>
+              <tr>
+                <th>KW</th>                
+                <th>Mo</th>
+                <th>Di</th>
+                <th>Mi</th>
+                <th>Do</th>
+                <th>Fr</th>
+                <th>Sa</th>
+                <th>So</th>
+              </tr>
+              <tr>
+                <td>41</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a></td>
+                <td><a href="/reservation/?id=1&time=21:00">21:00</a></td>
+                <td>-</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a></td>
+                <td><a href="/reservation/?id=1&time=21:00">21:00</a></td>
+                <td>-</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a><br/>
+                  <a href="/reservation/?id=1&time=21:00">21:00</a></td>
+              </tr>
+              <tr>
+                <td>42</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a></td>
+                <td><a href="/reservation/?id=1&time=21:00">21:00</a></td>
+                <td>-</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a></td>
+                <td><a href="/reservation/?id=1&time=21:00">21:00</a></td>
+                <td>-</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a><br/>
+                  <a href="/reservation/?id=1&time=21:00">21:00</a></td>
+              </tr>
+              <tr>
+                <td>43</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a></td>
+                <td><a href="/reservation/?id=1&time=21:00">21:00</a></td>
+                <td>-</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a></td>
+                <td><a href="/reservation/?id=1&time=21:00">21:00</a></td>
+                <td>-</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a><br/>
+                  <a href="/reservation/?id=1&time=21:00">21:00</a></td>
+              </tr>
+              <tr>
+                <td>44</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a></td>
+                <td><a href="/reservation/?id=1&time=21:00">21:00</a></td>
+                <td>-</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a></td>
+                <td><a href="/reservation/?id=1&time=21:00">21:00</a></td>
+                <td>-</td>
+                <td><a href="/reservation/?id=1&time=15:00">15:00</a><br/>
+                  <a href="/reservation/?id=1&time=21:00">21:00</a></td>
+              </tr>
+            </table>
+          </div>
+          
+	  <div class="description">
+	    Luke Skywalker, a spirited farm boy, joins rebel forces to save Princess Leia from the evil Darth Vader, and the galaxy from the Empire's planet-destroying Death Star.
+	  </div>
+
+          <div class="reservation">
+            <h2>Reservation</h2>
+            <div>
+              <label for="reservationNumberInput">Tickets</label>
+              <input type="number" min="1" max="20" name="reservationNumberInput" id="reservationNumberInput" value="2"/>
+              <br/>
+              Your current reservation is: <span id="reservationDesc">None</span>
+            </div>
+            <div id="canvasWrapper">
+              <span id="cinema"></span>
+              <!-- <canvas id="cinema" data-processing-sources="js/cinema.pde" ></canvas> -->
+            </div>
+          </div>
+	  
+	</article>
+	
+      </div>
+      
+      <div id="moviebar">
+	<img src="images/darkknight.jpg"></img>
+	<img src="images/avatar.jpg"></img>
+	<img src="images/quantum.jpg"></img>
+	<img src="images/starwars_esb.jpg"></img>
+	<img src="images/sherlock.jpg"></img>
+      </div>
+      
+      <footer>
+	<ul>
+	  <li><a href="">Impressum</a></li>
+	  <li>CinemaPortal_Ver.1.0</li>
+	</ul>
+      </footer>
+      
+    </div>
+  </body>  
+</html>

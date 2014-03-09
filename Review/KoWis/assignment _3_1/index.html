@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>CinemaPortal</title>
+		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+		<meta name="author" content="KoWis" />
+		<meta name="keywords" content="cinema, movie, trailer" />
+		
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	
+		<script src="http://maps.google.com/maps/api/js?key=AIzaSyDhyx-SDQtG4uDBbRYE2RClLMTp2zVoUsg&sensor=true"></script>
+				
+		<script>
+			function initialize(coords) {
+				var latlng = new google.maps.LatLng(coords.latitude, coords.longitude);
+				var myOptions = {
+					zoom: 14,
+					center: latlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map(document.getElementById("mapelement"), myOptions);
+				
+				var marker = new google.maps.Marker({
+					position: latlng, 
+					map: map, 
+					title: "Current Position"
+				}); 
+			}
+	  
+			navigator.geolocation.getCurrentPosition(function(position){ 
+				initialize(position.coords);
+			}, function(){
+				document.getElementById('mapelement').innerHTML = 'Position not found.';
+			});
+		</script>
+
+	</head>
+
+	<body>
+  
+		<div id="layer">
+			
+			<header>
+				CinemaPortal
+			</header>
+			
+			<nav>
+				<ul>
+					<li><a href="">Home</a></li>
+					<li><a href="">Cinemas</a></li>
+					<li><a href="">Movies</a></li>
+				</ul>
+			</nav>
+		
+			<aside>
+				<h1>Cinemas near your position</h1>
+				<div id="mapelement">
+					Getting position.
+				</div>
+				<h1>Search for Showing</h1>
+				<form id="side-form">
+					Date:
+					<input type="date" name="num" />
+					Number of tickets:
+					<input type="number" min="1" max="10" name="num" />
+					Movie:
+					<select>
+						<option selected>Planet Earth</option>
+						<option>Star Wars : The Phantom Menace</option>
+						<option>Grass: The Movie</option>
+						<option>Skyfall</option>
+					</select>
+					<button>Search</button>
+				</form>
+
+			</aside>
+		
+			<div id="content">
+			
+				<article>
+			
+					<div id=abstract>
+						<h1>Star Wars - A New Hope</h1>
+						<h2>(1977), Director: George Lucas, Writer: George Lucas</h2>
+					</div>
+			
+					<div id=trailer>
+						<video controls preload>
+							<source src="trailer/swtrailer.mp4" type='video/mp4; codecs="mp4, acc"' />
+							<source src="trailer/swtrailer.webm" type='video/webm; codecs="vp8, vorbis"' />
+							Video  not supported
+						</video>
+					</div>
+				
+					<div id=description>
+						Luke Skywalker, a spirited farm boy, joins rebel forces to save Princess Leia from the evil Darth Vader, and the galaxy from the Empire's planet-destroying Death Star.
+					</div>
+					
+				</article>
+				
+			</div>
+		
+			<div id="moviebar">
+				<img src="images/darkknight.jpg"></img>
+				<img src="images/avatar.jpg"></img>
+				<img src="images/quantum.jpg"></img>
+				<img src="images/starwars_esb.jpg"></img>
+				<img src="images/sherlock.jpg"></img>
+			</div>
+
+			<footer>
+				<ul>
+					<li><a href="">Impressum</a></li>
+					<li>CinemaPortal_Ver.1.0</li>
+				</ul>
+			</footer>
+			
+		</div>
+					
+	
+	</body>
+  
+</html>
