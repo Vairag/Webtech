@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Movie Search</title>
+    <title>Movie Ticket Reservation</title>
 
     <link rel="stylesheet" href="css/style.css" />
     <link href="css/smoothness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
@@ -40,7 +40,7 @@
 <body>
 
     <header>
-        <h1>Movie search</h1>
+        <h1>Movie Ticket Reservation</h1>
     </header>
 
     <nav id="nav">        
@@ -76,32 +76,16 @@
 
 	
 	<section class="feed">
-	<!-- We try to add Twitter Api feeds in our Website but we have problem in Combining.
-	  Please run this separate file for twitter API.  http://localhost/cinema_website/twitter_feed.html -->
-	 <span style='font-size: 12px; margin-left:20px'> Note :We try to add Twitter Api feeds here but we have problem in Combining.
-	  Please run this separate file for twitter API.  http://localhost/cinema_website/twitter_feed.html </span>
-    <pre class="code">
-      jQuery(function($){
-        $(".tweet").tweet({
-          join_text: "auto",
-          username: "IMDb",
-          avatar_size: 32,
-          count: 3,
-          auto_join_text_default: " we said, ",
-          auto_join_text_ed: " we ",
-          auto_join_text_ing: " we were ",
-          auto_join_text_reply: " we replied ",
-          auto_join_text_url: " we were checking out ",
-          loading_text: "loading tweets..."
-        });
-      });
-    </pre>
-    <div class='tweet query'></div>
-  </section>
+	
+	 <span style='font-size: 14px; margin-left:20px;margin-left:20px'> 
+		Note : Search Cinemas, which are close to your location and reserve tickets for movie.
+	 </span>
+    
+    </section>
 
 
     <footer>
-        WebTech Project 2012
+        Ticket Reservation | RWTH Aachen University | By : Vairag  Godhani
     </footer>
 
 </body>

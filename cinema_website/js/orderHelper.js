@@ -169,7 +169,7 @@ function shareOrderForm(){
 	var html = "<h3>You successfully booked " + SeatsToBeReserved.length + " seats"
 			+" for the movie <font color='blue'>" +chosenMovie+"</font> in the cinema <font color='blue'>" +chosenCinema+"</font>.</h3>"
 			+"<br/><script src='http://connect.facebook.net/en_US/all.js'></script>"
-			+"<input type='button' id='fbshare_btn' onclick='postToFeed(tmpSeatCount, chosenMovie, chosenCinema); return false;'/> <INPUT style='float:right;' TYPE='BUTTON' VALUE='Home' ONCLICK=\"window.location.href='index.htm'\">";
+			+"<input type='button' id='fbshare_btn' onclick='postToFeed(tmpSeatCount, chosenMovie, chosenCinema); return false;'/> <INPUT style='float:right;' TYPE='BUTTON' VALUE='Home' ONCLICK=\"window.location.href='index.php'\">";
 	
 	displayModal(html);
 	for (var i = 0; i < SeatsToBeReserved.length; i++) {

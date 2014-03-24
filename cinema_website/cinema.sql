@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2012 at 02:53 AM
+-- Generation Time: Mar 24, 2014 at 09:36 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS `box_office_employees` (
 
 INSERT INTO `box_office_employees` (`box_office_employees_id`, `box_office_employees_pwd`) VALUES
 ('employee1', 'boxoffice'),
-('raja', 'raja');
+('raja', 'raja'),
+('test', 'test');
 
 -- --------------------------------------------------------
 
@@ -54,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `movie_name` varchar(60) COLLATE latin1_general_ci NOT NULL,
   `seats` varchar(100) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`reservation_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `reservation`
@@ -65,7 +66,9 @@ INSERT INTO `reservation` (`reservation_id`, `user_name`, `user_email`, `cinema_
 (20, 'Mohamad', 'Mohamad@gmail.com', 'Filmstudio an der RWTH Aachen e.V.', '96 Hours - Taken 2', '82,85,25'),
 (22, 'Arkadi', 'arkadi@gmail.com', 'Smoky Sex + Gay Discount & Kino', 'Hotel Trasilvanien', '57,67,77,87'),
 (15, 'Tobias', 'tobi@gmail.com', 'Apollo Kino', 'Madagascar 3: Flucht nach Europa', '76,99,68'),
-(1, 'Vairag', 'viru@gmail.com', 'Capitol', 'Skyfall', '57,,59,118,119');
+(1, 'Vairag', 'viru@gmail.com', 'Capitol', 'Skyfall', '57,,59,118,119'),
+(24, 'Mahan', 'gvairagk@gmail.com', 'Capitol', 'Twilight: Breaking Dawn-Part 2', '24,34'),
+(25, 'Ramesh', 'ramesh@gmail.con', 'Filmstudio an der RWTH Aachen e.V.', 'Hotel Transylvania', '112');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

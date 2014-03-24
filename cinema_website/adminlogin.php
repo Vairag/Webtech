@@ -22,7 +22,7 @@
 	Employee Id :&nbsp;&nbsp;<input name="usrname" id="usrname" type="text" required="required"/><br/><br/>
     Password &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input name="pwd" id="pwd" type="password" required="required"/><br/><br/>
 	<input type="submit" id="buttonsubmit" value="LOGIN"/>
-	<input type="button" id="buttoncancel" value="Back to HOME Panel" ONCLICK="window.location.href='index.htm'"/>
+	<input type="button" id="buttoncancel" value="Back to HOME Panel" ONCLICK="window.location.href='index.php'"/>
 	
 	
 	<div  style='color:red;' >
